@@ -6,7 +6,7 @@ from mine2 import bot, dp  # on importe le bot et le dispatcher
 
 
 WEBHOOK_PATH = "/webhook"
-WEBHOOK_URL = f"https://https://mine-n.onrender.com{WEBHOOK_PATH}"
+WEBHOOK_URL = f"https://mine-n.onrender.com{WEBHOOK_PATH}"
 
 app = Flask(__name__)
 
