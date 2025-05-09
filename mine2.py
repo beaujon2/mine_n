@@ -19,7 +19,7 @@ TOKEN = "7500348646:AAHlWacjJCBP0NYDViHKl4sLLnbVkOAGYXs"
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 CHANNEL_ID = "@mine1wgroup"
-image_path = "images\\photo.jpg"
+image_path = "photo.jpg"
 welcome_message = """<b><i>⚙️ les nouvelles technologies ont permis d'obtenir des cotes futures directement à partir du jeu mine</i></b>
 
 ⚙️ administrator - @Minepro1w 🎰
@@ -147,9 +147,9 @@ async def check_subscription_callback(callback: types.CallbackQuery):
 
 # Démarrer le bot
 
-async def main():
+async def run_bot():
     logging.basicConfig(level=logging.INFO)
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(run_bot())
