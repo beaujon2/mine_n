@@ -1,19 +1,24 @@
-# server.py
-
-from flask import Flask
 from threading import Thread
-from mine2 import run_bot
+import asyncio
+from flask import Flask, request
+from aiogram import types
+from mine2 import bot, dp  # on importe le bot et le dispatcher
+
+
+WEBHOOK_PATH = "/webhook"
+WEBHOOK_URL = f"https://https://mine-n.onrender.com{WEBHOOK_PATH}"
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Bot Dice actif 24h/24 🚀"
+@app.route(WEBHOOK_PATH, methods=["POST"])
+async def telegram_webhook():
+    update = types.Update.model_validate(await request.get_json())
+    await dp.feed_update(bot, update)
+    return {"status": "ok"}
 
-def run():
-    app.run(host='0.0.0.0', port=8080)
+async def set_webhook():
+    await bot.set_webhook(WEBHOOK_URL)
 
-# Lancer le serveur Flask et le bot Telegram en parallèle
-if __name__ == '__main__':
-    Thread(target=run).start()
-    run_bot()
+if __name__ == "__main__":
+    asyncio.run(set_webhook())
+    app.run(host="0.0.0.0", port=8080)
