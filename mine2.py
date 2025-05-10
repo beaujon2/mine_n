@@ -147,9 +147,9 @@ async def check_subscription_callback(callback: types.CallbackQuery):
 
 # Démarrer le bot
 
-# async def run_bot():
-#     logging.basicConfig(level=logging.INFO)
-#     await dp.start_polling(bot)
+async def run():
+    logging.basicConfig(level=logging.INFO)
+    await dp.start_polling(bot)
 
-# if __name__ == "__main__":
-#     asyncio.run(run_bot())
+if __name__ == "__main__":
+    asyncio.run(run())
