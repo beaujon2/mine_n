@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route(WEBHOOK_PATH, methods=["POST"])
 async def telegram_webhook():
-    update = types.Update.model_validate(await request.get_json())
+    update = types.Update.model_validate(request.get_json())
     await dp.feed_update(bot, update)
     return {"status": "ok"}
 
